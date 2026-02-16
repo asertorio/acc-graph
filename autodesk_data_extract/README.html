@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Autodesk Construction Cloud Data Connector</title>
+  	<style>
+    	body
+    	{ 
+        background: #ECECEA;
+      	color: #222222;
+      	font-size: 12px;
+      	font-family: Arial;
+        margin: 0px 0px 0px 0px;
+      	padding: 0px;
+    	}
+    	h1
+    	{
+    	  font-weight: bold;
+    		font-size: 26px;
+    		background-color: #99CCFF;
+    		padding: 12px 6px 12px 6px;
+    		margin: 6px 0px 6px 0px;
+        border-radius: 5px;
+        border-radius: 5px;
+    	}
+    	h2
+    	{
+    	  font-weight: bold;
+    		font-size: 20px;
+    		background-color: #99CCFF;
+    		padding: 6px 6px 6px 6px;
+    		margin: 18px 0px 6px 0px;
+        border-radius: 5px;
+        border-radius: 5px;
+    	}
+    	hr
+    	{
+    	  color: #cccccc;
+    	  height: 1px;
+    	}
+    	p 
+    	{
+    		margin-top: 6px;
+    	}
+
+      #wrap
+      {
+        background-color: white;
+      	margin: 24px 24px 24px 24px;
+      	padding: 12px 18px 24px 18px;
+
+        border-radius: 5px;
+        border-radius: 5px;
+        text-align: left; 
+        box-shadow: 0 1px 8px 0px rgba(0,0,0,0.3);
+      }
+      
+      #content 
+      {
+    	  background-color: white;
+      	margin: 0px auto 0px;
+      	padding: 0px;
+      	line-height: 18px;
+      	min-height: 600px;	
+      }
+
+      /************************************************
+       *	Table formatting
+       ************************************************/
+      table {
+        border-collapse: collapse;
+      }
+      
+      td, th {
+        border: 1px solid #ddd;
+        padding: 3px;
+      }
+
+      tr:nth-child(odd){background-color: #f2f2f2;}
+      /* tr:hover {background-color: #ddd;} */
+
+      th {
+        padding-top: 3px;
+        padding-bottom: 3px;
+        text-align: left;
+        background-color: #83B93F;
+        color: white;
+      }
+            
+      /************************************************
+       *	Copyright  									*
+       ************************************************/
+      #copyright {
+      	background: #ccc;
+      	margin: 24px 24px 24px 24px;
+      	padding: 6px 12px 18px 12px;
+      	font-family: Verdana, Tahoma, Verdana;
+      	font-size: 12px;
+      	text-align: center;
+      
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      	
+      .copyright {
+      	width: 920px;
+      	margin: 0px auto 0px;
+      	padding: 15px 0px 0px 0px;
+      	/*rhp border-top: 1px solid #65ADC3; */
+      	}
+      	
+      #copyright p {
+      	color: #444;
+      	margin: 0px;	
+      	padding: 0px;
+      	}
+      	
+      #copyright a {
+      	color: #444;
+      	text-decoration: none;
+      	}
+      
+      #copyright a:hover {
+      	color: #444;
+      	text-decoration: underline;
+      	}
+     
+     #header
+     {
+    		background-color: #C4E1FF;
+    		font-weight: bold;
+     }
+     .message_highlight_note {
+  		  border-radius: 5px;
+  		  padding: 20px 24px 20px;
+  		  margin-top: 18px;
+  		  margin-bottom: 12px;
+  		  margin-left: auto;
+  		  margin-right: auto;
+  		  width: 400px;
+  		  text-align: left;
+  		  background-color: #FFFFBF;
+  		  box-shadow: 0 2px 4px 0 rgba(0,0,0,.3)
+	    }
+      
+  	</style>
+
+  </head>
+  <body>
+
+  <div id="wrap">
+  <div id="content">
+
+<h1>Autodesk Construction Cloud Data Connector</h1>
+<h2>Overview</h2>
+A common feature request for Autodesk&#39;s Construction Cloud solution has been the ability to connect Business Intelligence (BI) tools to analyze and process the data created in the various offerings. 
+The Data Connector is the answer for this requirement. The Data Connector allows users to request and download data housed in 
+the Construction Data Platform in a well defined schema/format. This data can then be 
+used for further analysis and to drive customer specific workflows.<h2>Data Schema &amp; Design</h2>
+A central aspect to the Data Connector is the data schema for data extracts.
+The data is extracted into a well defined schema much in the way a 
+traditional relational database schema is designed and we refer to this as the
+<b>ACC Data Schema</b>. Each service group is a separate 
+&quot;database&quot; schema design and each individual table in this design will be delivered via 
+separate CSV file extracts. 
+When a data request is completed, the Data Connector will generate a ZIP archive 
+file that will be made available for download by the user. The naming conventions 
+and directory structure for ZIP file extracts are the following:<ul>
+	<li><font color="#CC3300"><b>autodesk_data_extract.zip</b></font><ul>
+		<li><font color="#CC3300">&lt;schema1&gt;_&lt;table_name1&gt;.csv</font></li>
+		<li><font color="#CC3300">&lt;schema1&gt;_&lt;table_name2&gt;.csv</font></li>
+		<li><font color="#CC3300">&lt;schema1&gt;_&lt;table_name3&gt;.csv</font></li>
+		<li><font color="#CC3300">&lt;schema2&gt;_&lt;table_name1&gt;.csv</font></li>
+		<li><font color="#CC3300">&lt;schema2&gt;_&lt;table_name2&gt;.csv</font></li>
+		<li><font color="#CC3300">&lt;schema2&gt;_&lt;table_name3&gt;.csv</font></li>
+		<li>etc...</li>
+		<li><b>docs &lt;directory&gt;</b><ul>
+			<li><font color="#CC3300">README.html</font> - this document</li>
+			<li><b>schemas &lt;directory&gt;</b><ul>
+			<li><font color="#CC3300">&lt;schema&gt;.html</font> - detailed schema documentation 
+			for a particular schema</li>
+			<li><font color="#CC3300">&lt;schema&gt;.json</font> - JSON data dictionary for the particular schema</li>
+			<li><font color="#CC3300">schema.json</font> - JSON data dictionary file 
+			that describes the the entire ACC Data Schema definition</li>
+			<li><font color="#CC3300">schema_create_mssql.sql</font> - SQL file that will create the ACC 
+			Data Schema in a Microsoft SQL Server database</li>
+			<li><font color="#CC3300">schema_create_postgres.sql</font> - SQL file that will create the ACC 
+			Data Schema in a Postgres database</li>
+			<li><font color="#CC3300">activities_&lt;schema&gt;_verb_column_details.json</font> 
+			- programmatic (JSON) description of the Activities data for the 
+			schema</li>
+			<li><font color="#CC3300">activities_&lt;schema&gt;_verb_column_details.html</font> - detailed schema 
+			documentation for Activities data for the schema</li>
+		</ul>
+			</li>
+		</ul>
+		</li>
+		<li><font color="#CC3300">metadata.csv</font> - a file containing simple metadata on this extraction. 
+		The columns for this file are:<ul>
+		<li>created_at - the timestamp for the extraction creation</li>
+		<li>region - the region where this data exists. Possible values: US: 
+		United States / EMEA: Europe/ AUS: Australia</li>
+	</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+
+<h2>Column Definition Types</h2>
+The ACC Data Schema tables are often delivered in a &quot;lowest common 
+denominator&quot; format (i.e. CSV) and as a result the column type definitions are limited to the 
+following:<ul>
+	<li>boolean</li>
+	<li>date: string</li>
+	<li>enum: string</li>
+	<li>number</li>
+	<li>string</li>
+	<li>string: UUID <i>(xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)</i></li>
+	<li>string: null</li>
+	<li>time <i>(HH:MM:SS) (UTC)</i></li>
+	<li>timestamp: SQL <i>(YYYY-MM-DD HH:MM:SS.mmm) (UTC)</i></li>
+</ul>
+
+
+<h2>Schema Descriptions<br/></h2>
+
+<p>The following are the service groups included in this release of the 
+Data Connector. Browse to the schema below for details on the schema design. </p>
+
+<ul>
+	<li>
+	<a href="schemas/activities.html">activities</a><ul>
+			<li><a href="schemas/activities_admin_verb_column_details.html">
+			Activities Data Set Description: admin</a></li>
+			<li><a href="schemas/activities_assets_verb_column_details.html">
+			Activities Data Set Description: assets</a></li>
+			<li><a href="schemas/activities_bridge_verb_column_details.html">
+			Activities Data Set Description: bridge</a></li>
+			<li><a href="schemas/activities_cost_verb_column_details.html">Activities Data Set Description: 
+			cost</a></li>
+			<li><a href="schemas/activities_docs_verb_column_details.html">Activities Data Set Description: 
+			docs</a></li>
+			<li><a href="schemas/activities_issues_verb_column_details.html">Activities Data Set Description: 
+			issues</a></li>
+			<li><a href="schemas/activities_rfis_verb_column_details.html">Activities Data Set Description: 
+			rfis</a></li>
+			<li><a href="schemas/activities_sheets_verb_column_details.html">Activities Data Set Description: 
+			sheets</a></li>
+			<li><a href="schemas/activities_submittals_verb_column_details.html">Activities Data Set Description: 
+			submittals</a></li>
+			<li>
+			<span style="color: rgb(34, 34, 34); font-family: Arial; font-size: 12px; font-style: italic; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none; background-color: rgb(255, 255, 119)">
+			Notes:</span><ul>
+			<li>
+			<span style="font-style: italic; letter-spacing: normal; background-color: #FFFF77">
+			While some Activity Data Sets may include BIM 360 project data, 
+			only ACC project data is guaranteed to be delivered </span>
+			<li>
+			<span style="color: rgb(34, 34, 34); font-family: Arial; font-size: 12px; font-style: italic; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none; background-color: rgb(255, 255, 119)">The activities service group supports Date Range Extractions - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span></li>
+		</ul>	
+			</li>
+		</ul>	
+	</li>
+	<li><a href="schemas/admin.html">admin</a></li>
+	<li><a href="schemas/assets.html">assets</a></li>
+	<li><a href="schemas/checklists.html">checklists</a></li>
+	<li><a href="schemas/clashes.html">clashes</a></li>
+	<li><a href="schemas/cost.html">cost</a></li>
+	<li><a href="schemas/dailylogs.html">dailylogs</a></li>
+	<li><a href="schemas/forms.html">forms</a></li>
+	<li><a href="schemas/iq.html">iq</a></li>
+	<li><a href="schemas/issues.html">issues</a></li>
+	<li><a href="schemas/locations.html">locations</a></li>
+	<li><a href="schemas/markups.html">markups</a></li>
+	<li><a href="schemas/meetingminutes.html">meetingminutes</a></li>
+	<li><a href="schemas/packages.html">packages</a></li>
+	<li><a href="schemas/photos.html">photos</a></li>
+	<li><a href="schemas/relationships.html">relationships</a></li>
+	<li><a href="schemas/reviews.html">reviews</a></li>
+	<li><a href="schemas/rfis.html">rfis</a></li>
+	<li><a href="schemas/schedule.html">schedule</a></li>
+	<li><a href="schemas/sheets.html">sheets</a></li>
+	<li><a href="schemas/submittals.html">submittals</a></li>
+	<li><a href="schemas/submittalsacc.html">submittalsacc</a></li>
+	<li><a href="schemas/transmittals.html">transmittals</a></li>
+</ul>
+	
+<h2>ACC Data Schema Changes</h2>
+
+<p>The following links details changes made to the ACC Data Schema definitions.</p>
+<ul><li>Schema Changes: <a href="schemas/changes.html">html</a> - <a href="schemas/changes.json">json</a></li></ul>
+ 
+
+</div>
+  </div>
+
+    <div id="copyright">
+      <div class="copyright">
+    	  <p>&copy; 2023 Autodesk, Inc. | 
+        	<a target="_blank" href="https://construction.autodesk.com/">Autodesk Construction Cloud</a> | 
+        	<a target="_blank" href="https://www.autodesk.com/company">About Autodesk</a> </p>
+      </div>
+    </div>
+    
+  </body>
+</html>

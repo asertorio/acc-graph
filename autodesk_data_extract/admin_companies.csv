@@ -1,0 +1,3 @@
+﻿id,bim360_account_id,name,trade,category,address_line1,address_line2,city,state_or_province,postal_code,country,phone,website_url,description,erp_id,tax_id,status,created_at,project_size,user_size,custom_properties
+2feb2110-3f91-497f-97b8-db979a32dc81,60844ec8-1755-47a1-a106-1cc9a6c26e18,Anthony Sertorio,,owner,,,,,,US,,,,,,,2022-07-10 02:22:57.109,9,2,
+489f5b8c-da63-4673-b367-df41b9df4478,60844ec8-1755-47a1-a106-1cc9a6c26e18,Autodesk,"",,,,,,,,,"","","","",,2025-12-12 01:34:15.253,1,2,

@@ -1,0 +1,3 @@
+﻿id,version,bim360_account_id,bim360_project_id,name,description,is_default,created_at,created_by,updated_at,updated_by,deleted_at,deleted_by
+26311fcf-8214-41bb-91e7-b96c6bc58203,1566268,60844ec8-1755-47a1-a106-1cc9a6c26e18,af8b83a7-47eb-4049-9275-c86b659a4b79,Default,,t,2022-08-24 01:58:31.785,7G5ALB7C2DNA,2022-08-24 01:58:31.785,7G5ALB7C2DNA,,
+fac59130-4f76-40f1-94fe-5916ed061a03,2815537,60844ec8-1755-47a1-a106-1cc9a6c26e18,af8b83a7-47eb-4049-9275-c86b659a4b79,Site Install,Status of installation,f,2024-03-06 02:49:12.584,7VZ2Q8PTMR3E7H96,2024-03-06 02:50:26.466,7VZ2Q8PTMR3E7H96,,

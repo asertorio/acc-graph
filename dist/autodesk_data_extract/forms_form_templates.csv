@@ -1,0 +1,9 @@
+﻿created_by,updated_at,id,bim360_account_id,bim360_project_id,name,status,file_id,native_form_id,template_type
+7VZ2Q8PTMR3E7H96,2024-12-11 10:45:45.526815,a989e28c-23b1-4505-894e-bf32696759ec,60844ec8-1755-47a1-a106-1cc9a6c26e18,af8b83a7-47eb-4049-9275-c86b659a4b79,Video QA,active,,aafba9b2-d16b-4fee-90cd-e18c750c5c9e,
+,2023-03-12 01:57:06.292163,a372bfd7-ec14-47db-a6b5-7be7a84ef628,60844ec8-1755-47a1-a106-1cc9a6c26e18,af8b83a7-47eb-4049-9275-c86b659a4b79,(Sample) Job Hazard Analysis,active,8102a01b-960d-46e5-8e46-aae235ef22e2,,pg.template_type.safety
+7VZ2Q8PTMR3E7H96,2024-08-31 06:40:14.378278,06eab19c-30b7-4664-84e7-a8d1d18ce031,60844ec8-1755-47a1-a106-1cc9a6c26e18,af8b83a7-47eb-4049-9275-c86b659a4b79,Reinforcement Delivery,active,,3698e073-67bd-4f14-94af-155acabe1758,pg.template_type.quality
+,2023-03-12 01:57:06.32917,e5bdcc6a-48d2-43b3-83fb-70604ac425ef,60844ec8-1755-47a1-a106-1cc9a6c26e18,af8b83a7-47eb-4049-9275-c86b659a4b79,(Sample) Daily Report,active,,cd0207d0-a221-408d-b849-e0785bb0d4e6,pg.template_type.daily_report
+,2023-03-12 01:57:06.309339,f343eacd-61f0-4b01-b297-da045c80b03d,60844ec8-1755-47a1-a106-1cc9a6c26e18,af8b83a7-47eb-4049-9275-c86b659a4b79,(Sample) Time Sheet,active,47e5a838-c418-4f13-a076-5fcdf403e9b4,,pg.template_type.time_sheet
+7VZ2Q8PTMR3E7H96,2025-12-11 06:14:14.24953,8ed5854b-4df7-4ba6-b565-d7114f2784e3,60844ec8-1755-47a1-a106-1cc9a6c26e18,af8b83a7-47eb-4049-9275-c86b659a4b79,Test,active,,0f35cae8-7117-4098-a5ff-d0f19a95be13,
+,2026-01-03 11:35:03.697776,d57a82c9-2fc1-46ad-9f8e-84b69d53d71f,60844ec8-1755-47a1-a106-1cc9a6c26e18,af8b83a7-47eb-4049-9275-c86b659a4b79,Daily Safety Inspection,active,843b8378-4543-40a7-a662-534dc09b6d5a,,pg.template_type.safety
+7VZ2Q8PTMR3E7H96,2025-01-17 09:43:39.557068,d10aecb9-8316-48ee-b6ca-c4974ce9ea93,60844ec8-1755-47a1-a106-1cc9a6c26e18,af8b83a7-47eb-4049-9275-c86b659a4b79,Precast Quality Checklist,active,,e1467e77-8bf6-4741-8f38-a98c80a442c7,

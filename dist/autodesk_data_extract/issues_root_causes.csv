@@ -1,0 +1,41 @@
+﻿root_cause_id,bim360_account_id,bim360_project_id,root_cause_category_id,title,is_active,created_by,created_at,updated_by,updated_at,deleted_by,deleted_at,is_system
+08afdebc-35fb-4cf4-9c3e-521906250108,,,93d1b9cb-deb0-4166-9a48-5f0227feaacb,Human - Human error,t,System,2018-12-06 08:25:18.028,8P9VK3RMFR2M,2021-03-29 15:28:56.049,,,t
+1c39ebf0-5680-4b03-af84-ba910ae2d41c,,,a5cc6ec9-7e42-4413-b90d-1e3dcb6ad61c,Communication,t,System,2018-12-06 08:25:17.864,8P9VK3RMFR2M,2021-03-29 15:29:02.729,,,t
+1f706638-3a0e-470a-ba7f-06f7f4d23a55,,,a5cc6ec9-7e42-4413-b90d-1e3dcb6ad61c,Natural Disaster,t,System,2018-12-06 08:25:17.864,8P9VK3RMFR2M,2021-03-29 15:29:02.729,,,t
+25c079a1-62f7-41f7-8c26-cde83deedfa6,,,a5cc6ec9-7e42-4413-b90d-1e3dcb6ad61c,Installation,t,System,2018-12-06 08:25:17.864,8P9VK3RMFR2M,2021-03-29 15:29:02.729,,,t
+2ed65fa9-dfcd-4bc3-876d-922c4d01d59e,,,93d1b9cb-deb0-4166-9a48-5f0227feaacb,Human - Ignorance of procedure,t,System,2018-12-06 08:25:18.028,8P9VK3RMFR2M,2021-03-29 15:28:56.049,,,t
+3ede3f70-3a32-408d-a2e3-b24c47e402d7,,,93d1b9cb-deb0-4166-9a48-5f0227feaacb,Management - Lack of procedure,t,System,2018-12-06 08:25:18.028,8P9VK3RMFR2M,2021-03-29 15:28:56.049,,,t
+426e7b91-4790-4650-9749-47482463ca44,,,93d1b9cb-deb0-4166-9a48-5f0227feaacb,Human - Fatigue,t,System,2018-12-06 08:25:18.028,8P9VK3RMFR2M,2021-03-29 15:28:56.049,,,t
+48e2b269-6d2b-40d1-8a5f-c9607cb10713,,,93d1b9cb-deb0-4166-9a48-5f0227feaacb,Management - Lack of coordination,t,System,2018-12-06 08:25:18.028,8P9VK3RMFR2M,2021-03-29 15:28:56.049,,,t
+4ea3583b-4d6c-4295-b3c2-77bb3079b6bb,,,93d1b9cb-deb0-4166-9a48-5f0227feaacb,Human - Failed to identify unsafe condition,t,System,2018-12-06 08:25:18.028,8P9VK3RMFR2M,2021-03-29 15:28:56.049,,,t
+5514ea7c-0ea2-41b0-850e-df5bc9e09e50,,,a5cc6ec9-7e42-4413-b90d-1e3dcb6ad61c,Design Change,t,System,2018-12-06 08:25:17.864,8P9VK3RMFR2M,2021-03-29 15:29:02.729,,,t
+58c333e8-0835-4c7a-803e-ac5ec292df22,,,93d1b9cb-deb0-4166-9a48-5f0227feaacb,Management - Lack of protective safety equipment,t,System,2018-12-06 08:25:18.028,8P9VK3RMFR2M,2021-03-29 15:28:56.049,,,t
+5ef898ac-b931-4e16-9038-9d2f2a2ab0cb,,,93d1b9cb-deb0-4166-9a48-5f0227feaacb,Equipment - Improper equipment,t,System,2018-12-06 08:25:18.028,8P9VK3RMFR2M,2021-03-29 15:28:56.049,,,t
+60665f4e-dc28-4f7e-9ac6-149995179d61,,,93d1b9cb-deb0-4166-9a48-5f0227feaacb,Equipment - Improper maintenance,t,System,2018-12-06 08:25:18.028,8P9VK3RMFR2M,2021-03-29 15:28:56.049,,,t
+6471dddc-fee8-4547-b970-cdf20153eaa1,,,a5cc6ec9-7e42-4413-b90d-1e3dcb6ad61c,Incomplete Work,t,System,2018-12-06 08:25:17.864,8P9VK3RMFR2M,2021-03-29 15:29:02.729,,,t
+6e49df61-bc5e-4e7f-ba1d-ee166f9b1987,,,a5cc6ec9-7e42-4413-b90d-1e3dcb6ad61c,Planning,t,System,2018-12-06 08:25:17.864,8P9VK3RMFR2M,2021-03-29 15:29:02.729,,,t
+72bf550a-d9d9-41c6-ad83-a9d252d20707,,,a5cc6ec9-7e42-4413-b90d-1e3dcb6ad61c,Workmanship,t,System,2018-12-06 08:25:17.864,8P9VK3RMFR2M,2021-03-29 15:29:02.729,,,t
+731a0781-c8ad-44ff-a546-dfcad119166b,,,a5cc6ec9-7e42-4413-b90d-1e3dcb6ad61c,Design Flaw,t,System,2018-12-06 08:25:17.864,8P9VK3RMFR2M,2021-03-29 15:29:02.729,,,t
+767f7984-47e0-4ee4-9536-1ca2ffe4e6d8,,,93d1b9cb-deb0-4166-9a48-5f0227feaacb,Material - Wrong material,t,System,2018-12-06 08:25:18.028,8P9VK3RMFR2M,2021-03-29 15:28:56.049,,,t
+798b71b3-4249-4793-b62d-57f2eea35115,,,93d1b9cb-deb0-4166-9a48-5f0227feaacb,Human - Lack of skill or training,t,System,2018-12-06 08:25:18.028,8P9VK3RMFR2M,2021-03-29 15:28:56.049,,,t
+80a060d3-4647-4352-bd1d-ca93ff4985bc,,,369f1b01-8c1a-445f-a5f3-85b1adbb9a14,Design Coordination,t,System,2018-12-06 08:25:18.932,UH23PDKQG8F4,2021-03-29 20:33:29.609,,,t
+81beea1c-cdfa-445e-9314-b174c0a8358f,,,93d1b9cb-deb0-4166-9a48-5f0227feaacb,Human - Lack of coordination,t,System,2018-12-06 08:25:18.028,8P9VK3RMFR2M,2021-03-29 15:28:56.049,,,t
+8338ce72-cc83-49d7-90ca-93a3dd3d6ac7,,,369f1b01-8c1a-445f-a5f3-85b1adbb9a14,Constructability,t,System,2018-12-06 08:25:18.932,UH23PDKQG8F4,2021-03-29 20:33:29.609,,,t
+844fb40d-e63d-456d-90ac-2e486ac207c4,,,a5cc6ec9-7e42-4413-b90d-1e3dcb6ad61c,Housekeeping,t,System,2018-12-06 08:25:17.864,8P9VK3RMFR2M,2021-03-29 15:29:02.729,,,t
+85e38278-00d7-488d-be34-fa283d2b43fc,,,93d1b9cb-deb0-4166-9a48-5f0227feaacb,Human - Ignorance of use of PPE,t,System,2018-12-06 08:25:18.028,8P9VK3RMFR2M,2021-03-29 15:28:56.049,,,t
+8b9975d8-909c-4adb-bb42-c5528625463c,,,93d1b9cb-deb0-4166-9a48-5f0227feaacb,Management - Work permit not followed,t,System,2018-12-06 08:25:18.028,8P9VK3RMFR2M,2021-03-29 15:28:56.049,,,t
+9ad137d1-eab4-48c9-a709-e3eee57540ae,,,a5cc6ec9-7e42-4413-b90d-1e3dcb6ad61c,Trade Damage,t,System,2018-12-06 08:25:17.864,8P9VK3RMFR2M,2021-03-29 15:29:02.729,,,t
+9e784840-8dc3-4e63-82b6-645812ffafd5,,,93d1b9cb-deb0-4166-9a48-5f0227feaacb,Management - Insufficient planning,t,System,2018-12-06 08:25:18.028,8P9VK3RMFR2M,2021-03-29 15:28:56.049,,,t
+a4ccf064-9ec2-4171-9d55-4dda71dacd67,,,a5cc6ec9-7e42-4413-b90d-1e3dcb6ad61c,Coordination,t,System,2018-12-06 08:25:17.864,8P9VK3RMFR2M,2021-03-29 15:29:02.729,,,t
+ad671f4d-9f83-47aa-b6a8-e5ca4b131d06,,,369f1b01-8c1a-445f-a5f3-85b1adbb9a14,Design Deficiency,t,System,2018-12-06 08:25:18.932,UH23PDKQG8F4,2021-03-29 20:33:29.609,,,t
+aff4b70b-54aa-4e13-92b4-49caf542bef4,,,a5cc6ec9-7e42-4413-b90d-1e3dcb6ad61c,Weather,t,System,2018-12-06 08:25:17.864,8P9VK3RMFR2M,2021-03-29 15:29:02.729,,,t
+b7b6f8ec-5532-4c7b-8823-afe828056476,,,4cd8807f-a158-429b-97f6-ccef826570b2,Code Compliance,t,System,2018-12-06 08:25:19.337,8P9VK3RMFR2M,2021-03-29 15:29:01.701,,,t
+c98378f4-f274-4d10-b153-cf48bb497a71,,,93d1b9cb-deb0-4166-9a48-5f0227feaacb,Human - Mental Stress,t,System,2018-12-06 08:25:18.028,8P9VK3RMFR2M,2021-03-29 15:28:56.049,,,t
+c9c6217c-ec96-42fe-ba1f-8611850f609e,,,4cd8807f-a158-429b-97f6-ccef826570b2,Documentation Conflict,t,System,2018-12-06 08:25:19.337,8P9VK3RMFR2M,2021-03-29 15:29:01.701,,,t
+d2463003-fc6d-4e53-b91f-3af99f60b6d3,,,a5cc6ec9-7e42-4413-b90d-1e3dcb6ad61c,Inadequate Training,t,System,2018-12-06 08:25:17.864,8P9VK3RMFR2M,2021-03-29 15:29:02.729,,,t
+d8b0077b-e6b4-49c5-a208-987706b70b68,,,93d1b9cb-deb0-4166-9a48-5f0227feaacb,Equipment - Lack of inspection,t,System,2018-12-06 08:25:18.028,8P9VK3RMFR2M,2021-03-29 15:28:56.049,,,t
+da494a0e-1cc6-4531-9613-0dfae5be6eef,,,a5cc6ec9-7e42-4413-b90d-1e3dcb6ad61c,Manufacturer Defect,t,System,2018-12-06 08:25:17.864,8P9VK3RMFR2M,2021-03-29 15:29:02.729,,,t
+ddef18cf-2667-4bcd-aa83-1c07bea7c28c,,,93d1b9cb-deb0-4166-9a48-5f0227feaacb,Management - Improper housekeeping,t,System,2018-12-06 08:25:18.028,8P9VK3RMFR2M,2021-03-29 15:28:56.049,,,t
+e2271d18-84b9-4045-9a04-cf1c0bf619ea,,,4cd8807f-a158-429b-97f6-ccef826570b2,Documentation Incomplete,t,System,2018-12-06 08:25:19.337,8P9VK3RMFR2M,2021-03-29 15:29:01.701,,,t
+e6bbede9-c08d-44d7-8f3b-0610c18932a3,,,93d1b9cb-deb0-4166-9a48-5f0227feaacb,Management - Design deficiency,t,System,2018-12-06 08:25:18.028,8P9VK3RMFR2M,2021-03-29 15:28:56.049,,,t
+fe778380-f14a-4e8b-8736-37f047f7bf98,,,93d1b9cb-deb0-4166-9a48-5f0227feaacb,Material - Material component failure,t,System,2018-12-06 08:25:18.028,8P9VK3RMFR2M,2021-03-29 15:28:56.049,,,t

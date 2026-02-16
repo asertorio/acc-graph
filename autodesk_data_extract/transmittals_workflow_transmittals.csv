@@ -1,0 +1,3 @@
+﻿id,bim360_account_id,bim360_project_id,sequence_id,title,status,create_user_id,create_user_name,docs_count,created_at,updated_at,create_user_company_id,create_user_company_name
+54451560-464c-4029-a9ad-1a40d61be56e,60844ec8-1755-47a1-a106-1cc9a6c26e18,af8b83a7-47eb-4049-9275-c86b659a4b79,1,rst_basic_sample_project,2,183aeaa6-2336-4646-b4a7-7548e39b30f7,Anthony Sertorio,1,2025-12-14 23:19:34.069,2025-12-14 23:19:36.751,643946089,Autodesk
+451cbf7c-130e-4dd7-8c1e-39f49e9c97f2,60844ec8-1755-47a1-a106-1cc9a6c26e18,af8b83a7-47eb-4049-9275-c86b659a4b79,2,A000 - ARCHITECTURAL - COVER SHEET - OFFICE,2,183aeaa6-2336-4646-b4a7-7548e39b30f7,Anthony Sertorio,1,2025-12-14 23:37:48.052,2025-12-14 23:37:51.569,643946089,Autodesk

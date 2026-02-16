@@ -1,0 +1,14 @@
+﻿id,bim360_account_id,name,status
+1c32f585-7572-46d4-98c3-7bbb882c4945,60844ec8-1755-47a1-a106-1cc9a6c26e18,Architect,active
+8cb9cc37-7298-4914-9b1e-bee55ece86f2,60844ec8-1755-47a1-a106-1cc9a6c26e18,Document Manager,active
+f026d2cb-7f59-4bb0-b83e-444e9bf2be4e,60844ec8-1755-47a1-a106-1cc9a6c26e18,Engineer,active
+791cfac0-95a4-4f7e-9ad3-9e3fd1097b8f,60844ec8-1755-47a1-a106-1cc9a6c26e18,Estimator,active
+edc2c259-4c62-4b3b-9e6e-fcb6aa3cdf4c,60844ec8-1755-47a1-a106-1cc9a6c26e18,Executive,active
+c54a93a1-fffe-4d7c-b2b6-292556e6453b,60844ec8-1755-47a1-a106-1cc9a6c26e18,IT,active
+5d1c6bc2-39ed-467e-81fc-14de603fb200,60844ec8-1755-47a1-a106-1cc9a6c26e18,Superintendent,active
+279ad8d9-cb6e-486a-af45-e7eff26126ad,60844ec8-1755-47a1-a106-1cc9a6c26e18,Project Engineer,active
+775b6dea-7ae3-4e33-81b7-52c425b2221a,60844ec8-1755-47a1-a106-1cc9a6c26e18,Construction Manager,active
+f22fd1bf-2229-433c-8cf0-cc396c5db959,60844ec8-1755-47a1-a106-1cc9a6c26e18,Project Manager,active
+f4dc22a3-9d2c-4a13-9d76-caef80016b68,60844ec8-1755-47a1-a106-1cc9a6c26e18,BIM Manager,active
+fd353d26-3331-4e24-a063-8185d700e976,60844ec8-1755-47a1-a106-1cc9a6c26e18,Foreman,active
+0c12f5af-00f6-4cea-9b11-6487c023acfb,60844ec8-1755-47a1-a106-1cc9a6c26e18,VDC Manager,active
