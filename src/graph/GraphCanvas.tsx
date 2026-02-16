@@ -52,6 +52,7 @@ export function GraphCanvas() {
   const focusedEntityType = useFilterStore((s) => s.focusedEntityType);
   const statusFilter = useFilterStore((s) => s.statusFilter);
   const preserveConnectivity = useFilterStore((s) => s.preserveConnectivity);
+  const metadataFilters = useFilterStore((s) => s.metadataFilters);
   const layout = useGraphStore((s) => s.layout);
   const spacingFactor = useGraphStore((s) => s.spacingFactor);
   const selectedNodeId = useGraphStore((s) => s.selectedNodeId);
@@ -64,8 +65,9 @@ export function GraphCanvas() {
       showRelatedOnly,
       statusFilter,
       preserveConnectivity,
+      metadataFilters,
     });
-  }, [entities, relationships, enabledEntityTypes, selectedPersonIds, showRelatedOnly, statusFilter, preserveConnectivity]);
+  }, [entities, relationships, enabledEntityTypes, selectedPersonIds, showRelatedOnly, statusFilter, preserveConnectivity, metadataFilters]);
 
   const stylesheet = useMemo(() => buildStylesheet(focusedEntityType), [focusedEntityType]);
 

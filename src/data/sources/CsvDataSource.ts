@@ -1,5 +1,6 @@
 import type { DataSource, DataLoadResult, LoadProgress } from './DataSource';
 import type { UserRecord } from '../../types/entities';
+import type { Relationship } from '../../types/relationships';
 import type { SchemaTable } from '../schemas/types';
 import { parseCsvFile } from '../parsers/csvParser';
 import { parseRelationships } from '../parsers/relationshipParser';
@@ -49,7 +50,7 @@ export class CsvDataSource implements DataSource {
 
     // 1. Parse relationships CSV
     const relFile = this.fileMap.get('relationships_entity_relationship.csv');
-    let relationships = [];
+    let relationships: Relationship[] = [];
     if (relFile) {
       report('relationships_entity_relationship.csv');
       const relCsv = await parseCsvFile(relFile);
@@ -141,10 +142,10 @@ async function collectFiles(
 ): Promise<void> {
   for await (const entry of dirHandle.values()) {
     if (entry.kind === 'file') {
-      const file = await entry.getFile();
+      const file = await (entry as FileSystemFileHandle).getFile();
       files.set(file.name, file);
     } else if (entry.kind === 'directory') {
-      await collectFiles(entry, files, entry.name + '/');
+      await collectFiles(entry as FileSystemDirectoryHandle, files, entry.name + '/');
     }
   }
 }

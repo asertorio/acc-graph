@@ -8,6 +8,12 @@ dist/
 /autodesk_data_extract/
 # NOTE: public/autodesk_data_extract/ IS tracked — it's the sample data for dev mode
 
+# AI assistant instructions
+CLAUDE.md
+
+# Screenshots / images (test artifacts)
+*.png
+
 # Tool-generated
 .playwright-mcp/
 .claude/

@@ -1,9 +1,9 @@
-import type { Stylesheet } from 'cytoscape';
+import type { StylesheetStyle } from 'cytoscape';
 import { ENTITY_COLORS } from '../legend/colorMap';
 import type { EntityType } from '../types/entities';
 
-export function buildStylesheet(focusedEntityType: EntityType | null): Stylesheet[] {
-  const styles: Stylesheet[] = [
+export function buildStylesheet(focusedEntityType: EntityType | null): StylesheetStyle[] {
+  const styles: StylesheetStyle[] = [
     {
       selector: 'node',
       style: {
@@ -126,7 +126,7 @@ export function buildStylesheet(focusedEntityType: EntityType | null): Styleshee
     const dimmedIndex = styles.findIndex(
       (s) => 'selector' in s && s.selector === 'node.dimmed'
     );
-    const focusRules: Stylesheet[] = [
+    const focusRules: StylesheetStyle[] = [
       {
         selector: `node[entityType != "${focusedEntityType}"]`,
         style: {

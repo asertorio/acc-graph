@@ -54,7 +54,14 @@ Open [http://localhost:5173](http://localhost:5173).
 
 ## How to Get an Autodesk Data Extract
 
-Data extracts are generated from **Autodesk Construction Cloud** at the account level. The export produces a ZIP containing ~250 CSV files plus JSON schemas. Unzip it and point ACC Graph at the resulting folder.
+To access Data Connector:
+
+1. Select **Insight** from the product picker in Autodesk Construction Cloud
+2. Click **Data connector** at the bottom of the left panel
+3. Run or schedule an extraction
+4. Download the exported ZIP file (contains ~250 CSV files plus JSON schemas)
+5. Unzip the file
+6. Point ACC Graph at the unzipped `autodesk_data_extract` folder
 
 ## Tech Stack
 
