@@ -1,8 +1,8 @@
 {
-  "name": "temp-scaffold",
-  "private": true,
-  "version": "0.0.0",
+  "name": "acc-graph",
+  "version": "1.0.0",
   "type": "module",
+  "homepage": "https://asertorio.github.io/acc-graph/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

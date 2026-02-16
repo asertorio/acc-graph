@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Root-level data extract (user's local copy, not needed in repo)
+/autodesk_data_extract/
+# NOTE: public/autodesk_data_extract/ IS tracked — it's the sample data for dev mode
+
+# Tool-generated
+.playwright-mcp/
+.claude/
+
+# Environment & local overrides
+*.local
+.env
+.env.*
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+Thumbs.db
+.DS_Store

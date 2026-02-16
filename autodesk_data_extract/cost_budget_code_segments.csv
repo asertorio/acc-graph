@@ -1,3 +1,0 @@
-﻿id,bim360_account_id,bim360_project_id,name,length,position,type,delimiter,sample_code,is_variable_length,is_locked,created_at,updated_at
-0884ee40-a27b-11ed-98c9-8fd9fca9a825,60844ec8-1755-47a1-a106-1cc9a6c26e18,af8b83a7-47eb-4049-9275-c86b659a4b79,Sample segment 1,5,0,code,point,,f,f,2023-02-01 21:54:42.595,2023-02-01 21:54:42.595
-0884ee41-a27b-11ed-98c9-8fd9fca9a825,60844ec8-1755-47a1-a106-1cc9a6c26e18,af8b83a7-47eb-4049-9275-c86b659a4b79,Sample segment 2,3,1,code,point,,f,f,2023-02-01 21:54:42.595,2023-02-01 21:54:42.595
