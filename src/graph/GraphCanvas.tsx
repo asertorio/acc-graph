@@ -92,35 +92,20 @@ export function GraphCanvas() {
     handlersRegisteredRef.current = cy;
 
     cy.on('tap', 'node', (evt) => {
+      evt.target.select();  // Apply Cytoscape's :selected pseudo-class
       const nodeId = evt.target.id();
-      // Deselect all edges
-      cy.edges().unselect();
-      useGraphStore.getState().setSelectedNodeId(nodeId);
-      useGraphStore.getState().setSelectedEdgeId(null);
+      useGraphStore.getState().setSelectedNodeId(nodeId);  // This also clears selectedEdgeId
     });
 
     cy.on('tap', 'edge', (evt) => {
+      evt.target.select();  // Apply Cytoscape's :selected pseudo-class
       const edgeId = evt.target.id();
-      // Deselect all other edges and nodes
-      cy.elements().unselect();
-      // Select this edge
-      evt.target.select();
-      useGraphStore.getState().setSelectedEdgeId(edgeId);
-      useGraphStore.getState().setSelectedNodeId(null);
-    });
-
-    cy.on('mouseover', 'edge', (evt) => {
-      evt.target.addClass('hover');
-    });
-
-    cy.on('mouseout', 'edge', (evt) => {
-      evt.target.removeClass('hover');
+      useGraphStore.getState().setSelectedEdgeId(edgeId);  // This also clears selectedNodeId
     });
 
     cy.on('tap', (evt) => {
       if (evt.target === cy) {
-        // Clicked on background - clear all selections
-        cy.elements().unselect();
+        cy.elements().deselect();  // Clear Cytoscape's selection state
         useGraphStore.getState().setSelectedNodeId(null);
         useGraphStore.getState().setSelectedEdgeId(null);
       }
