@@ -17,7 +17,5 @@ export interface FilterState {
   showRelatedOnly: boolean;
   statusFilter: StatusFilterMode;
   preserveConnectivity: boolean;
-  connectivityIndicatorsEnabled: boolean;
-  maxConnectivityDepth: number;
   metadataFilters: MetadataFilter[];
 }

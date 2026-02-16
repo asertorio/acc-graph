@@ -9,8 +9,6 @@ interface FilterState {
   focusedEntityType: EntityType | null;
   statusFilter: StatusFilterMode;
   preserveConnectivity: boolean;
-  connectivityIndicatorsEnabled: boolean;
-  maxConnectivityDepth: number;
   metadataFilters: MetadataFilter[];
 
   toggleEntityType: (type: EntityType) => void;
@@ -24,8 +22,6 @@ interface FilterState {
   toggleFocusedEntityType: (type: EntityType) => void;
   setStatusFilter: (mode: StatusFilterMode) => void;
   setPreserveConnectivity: (preserve: boolean) => void;
-  setConnectivityIndicatorsEnabled: (enabled: boolean) => void;
-  setMaxConnectivityDepth: (depth: number) => void;
   addMetadataFilter: (filter: MetadataFilter) => void;
   removeMetadataFilter: (index: number) => void;
   clearMetadataFilters: () => void;
@@ -40,12 +36,10 @@ const ALL_ENTITY_TYPES: EntityType[] = [
 export const useFilterStore = create<FilterState>((set) => ({
   enabledEntityTypes: new Set(ALL_ENTITY_TYPES),
   selectedPersonIds: new Set(),
-  showRelatedOnly: false,
+  showRelatedOnly: true,
   focusedEntityType: null,
   statusFilter: 'all',
   preserveConnectivity: false,
-  connectivityIndicatorsEnabled: false,
-  maxConnectivityDepth: 3,
   metadataFilters: [],
 
   toggleEntityType: (type) =>
@@ -91,10 +85,6 @@ export const useFilterStore = create<FilterState>((set) => ({
 
   setPreserveConnectivity: (preserve) => set({ preserveConnectivity: preserve }),
 
-  setConnectivityIndicatorsEnabled: (enabled) => set({ connectivityIndicatorsEnabled: enabled }),
-
-  setMaxConnectivityDepth: (depth) => set({ maxConnectivityDepth: depth }),
-
   addMetadataFilter: (filter) =>
     set((state) => ({ metadataFilters: [...state.metadataFilters, filter] })),
 
@@ -109,12 +99,10 @@ export const useFilterStore = create<FilterState>((set) => ({
     set({
       enabledEntityTypes: new Set(ALL_ENTITY_TYPES),
       selectedPersonIds: new Set(),
-      showRelatedOnly: false,
+      showRelatedOnly: true,
       focusedEntityType: null,
       statusFilter: 'all',
       preserveConnectivity: false,
-      connectivityIndicatorsEnabled: false,
-      maxConnectivityDepth: 3,
       metadataFilters: [],
     }),
 }));

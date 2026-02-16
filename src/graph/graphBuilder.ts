@@ -1,10 +1,8 @@
 import type { EntityRecord } from '../types/entities';
 import type { Relationship } from '../types/relationships';
-import type { GraphElements, GraphNode, GraphEdge, ConnectivityMetadata } from '../types/graph';
+import type { GraphElements, GraphNode, GraphEdge } from '../types/graph';
 import type { FilterState, MetadataFilter } from '../types/filters';
-import { entityPassesStatusFilter, getItemStatus } from '../utils/statusClassifier';
 import { buildImpliedEdges } from './impliedEdgeBuilder';
-import { computeConnectivityMetadata } from './connectivityAnalyzer';
 import { applyAllMetadataFilters, statusFilterToMetadataFilter } from '../filters/metadataFilters';
 
 export function buildGraphElements(
@@ -18,8 +16,6 @@ export function buildGraphElements(
     showRelatedOnly,
     statusFilter,
     preserveConnectivity,
-    connectivityIndicatorsEnabled,
-    maxConnectivityDepth,
     metadataFilters,
   } = filters;
 
@@ -92,33 +88,6 @@ export function buildGraphElements(
     }
   }
 
-  // Compute connectivity metadata if enabled
-  let connectivityMap = new Map<string, ConnectivityMetadata>();
-  if (connectivityIndicatorsEnabled && statusFilter && statusFilter !== 'all') {
-    try {
-      // Build target subset: entities that match the status filter
-      const targetSubset = new Set<string>();
-      for (const [id, entity] of entities) {
-        const itemStatus = getItemStatus(entity);
-        if (itemStatus === statusFilter) {
-          targetSubset.add(id);
-        }
-      }
-
-      // Compute connectivity for all entities
-      if (targetSubset.size > 0) {
-        connectivityMap = computeConnectivityMetadata(
-          entities,
-          relationships,
-          targetSubset,
-          maxConnectivityDepth || 3
-        );
-      }
-    } catch (error) {
-      console.error('Error computing connectivity metadata:', error);
-    }
-  }
-
   // Build nodes from candidate entities
   const nodes: GraphNode[] = [];
   for (const id of candidateIds) {
@@ -133,9 +102,6 @@ export function buildGraphElements(
       continue;
     }
 
-    // Attach connectivity metadata if available
-    const connectivity = connectivityMap.get(id);
-
     nodes.push({
       data: {
         id,
@@ -143,7 +109,6 @@ export function buildGraphElements(
         domain: entity.domain,
         displayName: entity.displayName || entity.entityType,
         isOpaque: entity.isOpaque,
-        connectivity,
       },
       classes: entity.isOpaque ? 'opaque' : undefined,
     });

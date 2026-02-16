@@ -116,21 +116,6 @@ export function buildStylesheet(focusedEntityType: EntityType | null): Styleshee
         'target-arrow-color': '#6b7280',
       },
     },
-    // Connectivity indicators
-    {
-      selector: 'node[?connectivity.hasDirectConnection]',
-      style: {
-        'border-width': 4,
-        'border-style': 'double',
-      },
-    },
-    {
-      selector: 'node[connectivity.connectionDepth > 1]',
-      style: {
-        'border-width': 3,
-        'border-style': 'dotted',
-      },
-    },
   ];
 
   // When a focus type is active, inject attribute-based dim/highlight rules

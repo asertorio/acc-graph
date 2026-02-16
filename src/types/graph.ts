@@ -13,12 +13,6 @@ export interface ImpliedEdgeMetadata {
   originalRelationships: string[]; // relationship GUIDs
 }
 
-export interface ConnectivityMetadata {
-  hasDirectConnection: boolean;     // 1-hop to target subset
-  connectionDepth: number | null;    // N-hop distance (null if no connection)
-  connectedItemIds: string[];        // Entity IDs of connected items in target subset
-}
-
 export interface GraphNode extends ElementDefinition {
   data: {
     id: string;
@@ -26,7 +20,6 @@ export interface GraphNode extends ElementDefinition {
     domain: string;
     displayName: string;
     isOpaque: boolean;
-    connectivity?: ConnectivityMetadata;
     [key: string]: unknown;
   };
 }

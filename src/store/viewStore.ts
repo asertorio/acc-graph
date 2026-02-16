@@ -42,8 +42,12 @@ export const useViewStore = create<ViewState>((set, get) => ({
       selectedPersonIds: [...filterState.selectedPersonIds],
       showRelatedOnly: filterState.showRelatedOnly,
       focusedEntityType: filterState.focusedEntityType,
+      statusFilter: filterState.statusFilter,
+      preserveConnectivity: filterState.preserveConnectivity,
+      metadataFilters: filterState.metadataFilters,
       layout: graphState.layout,
       spacingFactor: graphState.spacingFactor,
+      clusterHighlight: graphState.clusterHighlight,
     };
 
     const next = [...get().savedViews, view];
@@ -60,10 +64,19 @@ export const useViewStore = create<ViewState>((set, get) => ({
     filterStore.setSelectedPersons(view.selectedPersonIds);
     filterStore.setShowRelatedOnly(view.showRelatedOnly);
     filterStore.setFocusedEntityType(view.focusedEntityType);
+    if (view.statusFilter !== undefined) filterStore.setStatusFilter(view.statusFilter);
+    if (view.preserveConnectivity !== undefined) filterStore.setPreserveConnectivity(view.preserveConnectivity);
+    if (view.metadataFilters !== undefined) {
+      filterStore.clearMetadataFilters();
+      for (const f of view.metadataFilters) {
+        filterStore.addMetadataFilter(f);
+      }
+    }
 
     const graphStore = useGraphStore.getState();
     graphStore.setLayout(view.layout);
     graphStore.setSpacingFactor(view.spacingFactor);
+    if (view.clusterHighlight !== undefined) graphStore.setClusterHighlight(view.clusterHighlight);
   },
 
   deleteView: (id) => {

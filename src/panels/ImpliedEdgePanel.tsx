@@ -23,29 +23,17 @@ export function ImpliedEdgePanel() {
   let impliedMetadata: ImpliedEdgeMetadata | undefined;
   let isImplied = false;
 
-  // Check if it's an implied edge first (format: implied-{sourceId}-{targetId})
-  const impliedMatch = selectedEdgeId.match(/^implied-(.+?)-(.+)$/);
-  if (impliedMatch) {
-    isImplied = true;
-    sourceId = impliedMatch[1];
-    targetId = impliedMatch[2];
-  }
-
-  // Get edge data from cytoscape (works for both regular and implied edges)
+  // Always get source/target/metadata from the Cytoscape edge data object
+  // (parsing the edge ID string is unreliable because entity IDs contain dashes)
   if (typeof window !== 'undefined') {
     const cy = (window as unknown as { __cy?: cytoscape.Core }).__cy;
     if (cy) {
       const edge = cy.getElementById(selectedEdgeId);
       if (edge.length > 0) {
-        // For regular edges, get source/target from edge data
-        if (!isImplied) {
-          sourceId = edge.data('source');
-          targetId = edge.data('target');
-        }
-        // For implied edges, get metadata
-        if (isImplied) {
-          impliedMetadata = edge.data('impliedMetadata') as ImpliedEdgeMetadata | undefined;
-        }
+        sourceId = edge.data('source');
+        targetId = edge.data('target');
+        impliedMetadata = edge.data('impliedMetadata') as ImpliedEdgeMetadata | undefined;
+        isImplied = !!impliedMetadata;
       }
     }
   }

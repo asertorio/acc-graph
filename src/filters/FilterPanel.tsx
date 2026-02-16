@@ -46,10 +46,6 @@ export function FilterPanel() {
   const setStatusFilter = useFilterStore((s) => s.setStatusFilter);
   const preserveConnectivity = useFilterStore((s) => s.preserveConnectivity);
   const setPreserveConnectivity = useFilterStore((s) => s.setPreserveConnectivity);
-  const connectivityIndicatorsEnabled = useFilterStore((s) => s.connectivityIndicatorsEnabled);
-  const setConnectivityIndicatorsEnabled = useFilterStore((s) => s.setConnectivityIndicatorsEnabled);
-  const maxConnectivityDepth = useFilterStore((s) => s.maxConnectivityDepth);
-  const setMaxConnectivityDepth = useFilterStore((s) => s.setMaxConnectivityDepth);
   const resetFilters = useFilterStore((s) => s.resetFilters);
 
   const [personSearch, setPersonSearch] = useState('');
@@ -86,7 +82,10 @@ export function FilterPanel() {
         <Filter size={14} className="text-gray-500" />
         <span className="text-sm font-semibold text-gray-700">Filters</span>
         <button
-          onClick={resetFilters}
+          onClick={() => {
+            resetFilters();
+            useGraphStore.getState().setClusterHighlight(false);
+          }}
           className="ml-auto p-1 hover:bg-gray-100 rounded text-gray-400 hover:text-gray-600"
           title="Reset filters"
         >
@@ -99,18 +98,31 @@ export function FilterPanel() {
         <div className="p-3 border-b border-gray-100">
           <div className="flex items-center justify-between mb-2">
             <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Types</h4>
-            <button
-              onClick={() => {
-                if (allEnabled) {
-                  useFilterStore.getState().clearEntityTypes();
-                } else {
-                  setAllEntityTypes(presentTypes);
-                }
-              }}
-              className="text-[10px] text-blue-500 hover:text-blue-700"
-            >
-              {allEnabled ? 'None' : 'All'}
-            </button>
+            <div className="flex items-center gap-1">
+              <button
+                onClick={() => setAllEntityTypes(presentTypes)}
+                disabled={allEnabled}
+                className={`text-[10px] px-1.5 py-0.5 rounded ${
+                  allEnabled
+                    ? 'text-gray-300 cursor-default'
+                    : 'text-blue-500 hover:text-blue-700 hover:bg-blue-50'
+                }`}
+              >
+                All
+              </button>
+              <span className="text-gray-300 text-[10px]">|</span>
+              <button
+                onClick={() => useFilterStore.getState().clearEntityTypes()}
+                disabled={enabledEntityTypes.size === 0}
+                className={`text-[10px] px-1.5 py-0.5 rounded ${
+                  enabledEntityTypes.size === 0
+                    ? 'text-gray-300 cursor-default'
+                    : 'text-blue-500 hover:text-blue-700 hover:bg-blue-50'
+                }`}
+              >
+                None
+              </button>
+            </div>
           </div>
           {focusedEntityType && (
             <button
@@ -190,34 +202,6 @@ export function FilterPanel() {
             <span className="text-xs text-gray-700">Preserve connectivity</span>
           </label>
           <p className="text-[10px] text-gray-400 mt-1 ml-5">Show implied links through hidden nodes</p>
-
-          <label className="flex items-center gap-2 cursor-pointer">
-            <input
-              type="checkbox"
-              checked={connectivityIndicatorsEnabled}
-              onChange={(e) => setConnectivityIndicatorsEnabled(e.target.checked)}
-              className="w-3 h-3 rounded border-gray-300"
-            />
-            <span className="text-xs text-gray-700">Show connectivity</span>
-          </label>
-          <p className="text-[10px] text-gray-400 mt-1 ml-5">Highlight connections to filtered items</p>
-
-          {connectivityIndicatorsEnabled && (
-            <div className="ml-5 mt-1">
-              <label className="flex items-center gap-2">
-                <span className="text-[10px] text-gray-500">Max depth:</span>
-                <select
-                  value={maxConnectivityDepth}
-                  onChange={(e) => setMaxConnectivityDepth(Number(e.target.value))}
-                  className="text-[10px] border border-gray-200 rounded px-1.5 py-0.5 bg-white"
-                >
-                  <option value={2}>2 hops</option>
-                  <option value={3}>3 hops</option>
-                  <option value={4}>4 hops</option>
-                </select>
-              </label>
-            </div>
-          )}
 
           <ClusterHighlightToggle />
         </div>
