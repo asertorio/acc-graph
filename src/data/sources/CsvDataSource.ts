@@ -6,7 +6,7 @@ import { parseCsvFile } from '../parsers/csvParser';
 import { parseRelationships } from '../parsers/relationshipParser';
 import { buildEntityIndex, resolveAllEntities, addUnrelatedEntities, type EntityIndex } from '../parsers/entityResolver';
 import { getAllMappings } from '../../utils/domainMapper';
-import { parseSchemaJson } from '../schemas/schemaLoader';
+import { parseSchemaJson, SCHEMA_FILES } from '../schemas/schemaLoader';
 import { LOOKUP_TABLES } from '../../utils/lookupRegistry';
 
 export class CsvDataSource implements DataSource {
@@ -39,8 +39,7 @@ export class CsvDataSource implements DataSource {
 
   async loadAll(onProgress?: (progress: LoadProgress) => void): Promise<DataLoadResult> {
     const csvFiles = [...this.fileMap.entries()].filter(([name]) => name.endsWith('.csv'));
-    const jsonFiles = [...this.fileMap.entries()].filter(([name]) => name.endsWith('.json'));
-    const totalFiles = csvFiles.length + jsonFiles.length;
+    const totalFiles = csvFiles.length + SCHEMA_FILES.length;
     let processed = 0;
 
     const report = (fileName: string) => {
@@ -107,20 +106,21 @@ export class CsvDataSource implements DataSource {
     // Add unrelated entities (entities without relationships)
     addUnrelatedEntities(entities, entityIndices, mappings);
 
-    // 6. Load schemas
+    // 6. Load schemas (only curated list — excludes schema.json which has an
+    //    incompatible nested structure that would overwrite correct schemas)
     const schemas = new Map<string, SchemaTable>();
-    for (const [name, file] of this.fileMap.entries()) {
-      if (name.endsWith('.json')) {
-        try {
-          report(name);
-          const text = await file.text();
-          const parsed = parseSchemaJson(text, name.replace('.json', ''));
-          for (const [tableName, table] of parsed.entries()) {
-            schemas.set(tableName, table);
-          }
-        } catch {
-          // Skip invalid JSON schema files
+    for (const schemaFile of SCHEMA_FILES) {
+      const file = this.fileMap.get(schemaFile);
+      if (!file) continue;
+      try {
+        report(schemaFile);
+        const text = await file.text();
+        const parsed = parseSchemaJson(text, schemaFile.replace('.json', ''));
+        for (const [tableName, table] of parsed.entries()) {
+          schemas.set(tableName, table);
         }
+      } catch {
+        // Skip invalid JSON schema files
       }
     }
 

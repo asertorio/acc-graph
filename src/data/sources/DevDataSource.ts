@@ -5,7 +5,7 @@ import { parseCsvText } from '../parsers/csvParser';
 import { parseRelationships } from '../parsers/relationshipParser';
 import { buildEntityIndex, resolveAllEntities, addUnrelatedEntities, type EntityIndex } from '../parsers/entityResolver';
 import { getAllMappings } from '../../utils/domainMapper';
-import { parseSchemaJson } from '../schemas/schemaLoader';
+import { parseSchemaJson, SCHEMA_FILES } from '../schemas/schemaLoader';
 import { LOOKUP_TABLES } from '../../utils/lookupRegistry';
 
 const DATA_DIR = `${import.meta.env.BASE_URL}autodesk_data_extract`;
@@ -17,16 +17,7 @@ export class DevDataSource implements DataSource {
     neededCsvFiles.add('relationships_entity_relationship.csv');
     neededCsvFiles.add('admin_users.csv');
 
-    const schemaFiles = [
-      'activities.json', 'admin.json', 'assets.json', 'bridge.json',
-      'checklists.json', 'cost.json', 'daily_logs.json', 'documents.json',
-      'forms.json', 'issues.json', 'locations.json', 'markups.json',
-      'model_coordination.json', 'photos.json', 'relationships.json',
-      'rfis.json', 'schedule.json', 'sheets.json', 'submittals.json',
-      'transmittals.json',
-    ];
-
-    const totalFiles = neededCsvFiles.size + schemaFiles.length;
+    const totalFiles = neededCsvFiles.size + SCHEMA_FILES.length;
     let processed = 0;
 
     const report = (fileName: string) => {
@@ -98,7 +89,7 @@ export class DevDataSource implements DataSource {
 
     // 6. Load schemas
     const schemas = new Map<string, SchemaTable>();
-    for (const schemaFile of schemaFiles) {
+    for (const schemaFile of SCHEMA_FILES) {
       report(schemaFile);
       try {
         const text = await fetchFile(`schemas/${schemaFile}`);

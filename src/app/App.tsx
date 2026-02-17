@@ -42,7 +42,6 @@ export function App() {
 
   const [isSampleData, setIsSampleData] = useState(false);
   const [showWelcome, setShowWelcome] = useState(false);
-  const folderInputRef = useRef<HTMLInputElement>(null);
   const autoLoadedRef = useRef(false);
 
   const loadData = useCallback(async (dataSource: DataSource, sample = false) => {
@@ -101,13 +100,6 @@ export function App() {
     }
   }, [loadData]);
 
-  const handleFolderInput = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-    if (!files || files.length === 0) return;
-    const ds = CsvDataSource.fromFileList(files);
-    await loadData(ds, false);
-  }, [loadData]);
-
   const handleDrop = useCallback(async (e: React.DragEvent) => {
     e.preventDefault();
     const items = e.dataTransfer.items;
@@ -163,24 +155,6 @@ export function App() {
           >
             <FolderOpen size={14} />
             Select Folder
-          </button>
-          {/* Fallback folder input for browsers without directory picker */}
-          <input
-            ref={folderInputRef}
-            type="file"
-            /* @ts-expect-error webkitdirectory is a non-standard attribute */
-            webkitdirectory=""
-            directory=""
-            multiple
-            onChange={handleFolderInput}
-            className="hidden"
-          />
-          <button
-            onClick={() => folderInputRef.current?.click()}
-            disabled={isLoading}
-            className="text-xs text-gray-500 hover:text-gray-700 underline"
-          >
-            or browse
           </button>
         </div>
 
