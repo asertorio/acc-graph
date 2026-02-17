@@ -1,5 +1,5 @@
-import { useCallback, useRef } from 'react';
-import { FolderOpen, Network, Loader2 } from 'lucide-react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { FolderOpen, Network, Loader2, X, Upload, Info } from 'lucide-react';
 import { useDataStore } from '../store/dataStore';
 import { useGraphStore } from '../store/graphStore';
 import { CsvDataSource } from '../data/sources/CsvDataSource';
@@ -40,9 +40,12 @@ export function App() {
   const spacingFactor = useGraphStore((s) => s.spacingFactor);
   const setSpacingFactor = useGraphStore((s) => s.setSpacingFactor);
 
+  const [isSampleData, setIsSampleData] = useState(false);
+  const [showWelcome, setShowWelcome] = useState(false);
   const folderInputRef = useRef<HTMLInputElement>(null);
+  const autoLoadedRef = useRef(false);
 
-  const loadData = useCallback(async (dataSource: DataSource) => {
+  const loadData = useCallback(async (dataSource: DataSource, sample = false) => {
     const store = useDataStore.getState();
     store.setLoading(true);
     store.setError(null);
@@ -60,6 +63,7 @@ export function App() {
       store.setSchemas(result.schemas);
       store.setUsers(result.users);
       store.setLoaded(true);
+      setIsSampleData(sample);
     } catch (err) {
       store.setError(err instanceof Error ? err.message : 'Failed to load data');
     } finally {
@@ -68,15 +72,29 @@ export function App() {
     }
   }, []);
 
-  const handleDevLoad = useCallback(async () => {
+  // Auto-load sample data on mount
+  useEffect(() => {
+    if (autoLoadedRef.current) return;
+    autoLoadedRef.current = true;
+
     const ds = new DevDataSource();
-    await loadData(ds);
+    loadData(ds, true).then(() => {
+      const dismissed = localStorage.getItem('acc-graph-welcome-dismissed');
+      if (!dismissed) {
+        setShowWelcome(true);
+      }
+    });
   }, [loadData]);
+
+  const handleDismissWelcome = useCallback(() => {
+    setShowWelcome(false);
+    localStorage.setItem('acc-graph-welcome-dismissed', '1');
+  }, []);
 
   const handleSelectFolder = useCallback(async () => {
     try {
       const ds = await CsvDataSource.fromDirectoryPicker();
-      await loadData(ds);
+      await loadData(ds, false);
     } catch (err) {
       if (err instanceof Error && err.name === 'AbortError') return;
       useDataStore.getState().setError(err instanceof Error ? err.message : 'Failed to open folder');
@@ -87,7 +105,7 @@ export function App() {
     const files = e.target.files;
     if (!files || files.length === 0) return;
     const ds = CsvDataSource.fromFileList(files);
-    await loadData(ds);
+    await loadData(ds, false);
   }, [loadData]);
 
   const handleDrop = useCallback(async (e: React.DragEvent) => {
@@ -106,7 +124,7 @@ export function App() {
     await collectDroppedFiles(entries, files);
     if (files.size > 0) {
       const ds = CsvDataSource.fromDroppedItems(files);
-      await loadData(ds);
+      await loadData(ds, false);
     }
   }, [loadData]);
 
@@ -164,21 +182,24 @@ export function App() {
           >
             or browse
           </button>
-          {import.meta.env.DEV && (
-            <button
-              onClick={handleDevLoad}
-              disabled={isLoading}
-              className="flex items-center gap-1 px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded hover:bg-gray-200 disabled:opacity-50"
-            >
-              Dev Load
-            </button>
-          )}
         </div>
 
         {isLoaded && (
           <div className="flex items-center gap-3 ml-4 text-xs text-gray-500">
+            {isSampleData && (
+              <span className="px-2 py-0.5 bg-amber-100 text-amber-700 rounded-full text-[10px] font-medium">
+                Sample Data
+              </span>
+            )}
             <span>{entities.size} nodes</span>
             <span>{relationships.length} edges</span>
+            <button
+              onClick={() => setShowWelcome(true)}
+              className="text-gray-400 hover:text-gray-600"
+              title="About ACC Graph"
+            >
+              <Info size={14} />
+            </button>
           </div>
         )}
 
@@ -243,6 +264,17 @@ export function App() {
 
       {/* Legend */}
       {isLoaded && <ColorLegend />}
+
+      {/* Welcome Modal */}
+      {showWelcome && (
+        <WelcomeModal
+          onDismiss={handleDismissWelcome}
+          onSelectFolder={() => {
+            handleDismissWelcome();
+            handleSelectFolder();
+          }}
+        />
+      )}
     </div>
   );
 }
@@ -297,6 +329,61 @@ function ErrorState({ error }: { error: string }) {
       >
         Dismiss
       </button>
+    </div>
+  );
+}
+
+function WelcomeModal({ onDismiss, onSelectFolder }: { onDismiss: () => void; onSelectFolder: () => void }) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+      <div className="bg-white rounded-xl shadow-2xl max-w-md w-full mx-4 overflow-hidden">
+        <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2 text-white">
+            <Network size={20} />
+            <h2 className="font-semibold text-base">Welcome to ACC Graph</h2>
+          </div>
+          <button onClick={onDismiss} className="text-white/70 hover:text-white">
+            <X size={18} />
+          </button>
+        </div>
+
+        <div className="px-6 py-5 space-y-4">
+          <p className="text-sm text-gray-600 leading-relaxed">
+            You're viewing <strong>sample data</strong> to demonstrate how ACC Graph visualizes
+            relationships between Autodesk Construction Cloud entities.
+          </p>
+
+          <div className="bg-gray-50 rounded-lg p-4 space-y-3">
+            <p className="text-sm font-medium text-gray-700">To load your own project data:</p>
+            <ol className="text-sm text-gray-600 space-y-2 list-decimal list-inside">
+              <li>In ACC, select <strong>Insight</strong> from the product picker</li>
+              <li>Click <strong>Data Connector</strong> at the bottom of the left panel</li>
+              <li>Run or schedule an extraction</li>
+              <li>Download and unzip the exported ZIP file</li>
+            </ol>
+          </div>
+
+          <p className="text-xs text-gray-400">
+            Your data never leaves your browser -- everything is processed locally.
+          </p>
+        </div>
+
+        <div className="px-6 py-4 bg-gray-50 border-t border-gray-100 flex items-center gap-3">
+          <button
+            onClick={onSelectFolder}
+            className="flex items-center gap-2 px-4 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium"
+          >
+            <Upload size={14} />
+            Load My Data
+          </button>
+          <button
+            onClick={onDismiss}
+            className="px-4 py-2 text-sm text-gray-600 hover:text-gray-800 font-medium"
+          >
+            Explore Sample Data
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

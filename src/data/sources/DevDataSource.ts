@@ -8,7 +8,7 @@ import { getAllMappings } from '../../utils/domainMapper';
 import { parseSchemaJson } from '../schemas/schemaLoader';
 import { LOOKUP_TABLES } from '../../utils/lookupRegistry';
 
-const DATA_DIR = '/autodesk_data_extract';
+const DATA_DIR = `${import.meta.env.BASE_URL}autodesk_data_extract`;
 
 export class DevDataSource implements DataSource {
   async loadAll(onProgress?: (progress: LoadProgress) => void): Promise<DataLoadResult> {
