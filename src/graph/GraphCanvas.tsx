@@ -84,10 +84,8 @@ export function GraphCanvas() {
 
   const handleCyRef = useCallback((cy: cytoscape.Core) => {
     cyRef.current = cy;
-    // Expose for dev/testing
-    if (import.meta.env.DEV) {
-      (window as unknown as Record<string, unknown>).__cy = cy;
-    }
+    // Expose cy instance globally (used by ImpliedEdgePanel to read edge data)
+    (window as unknown as Record<string, unknown>).__cy = cy;
 
     // Only register handlers once per cy instance
     if (handlersRegisteredRef.current === cy) return;
