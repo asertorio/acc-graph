@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Search, X, ChevronUp, ChevronDown } from 'lucide-react';
-import { useDataStore } from '@/store/dataStore';
-import { useGraphStore } from '@/store/graphStore';
-import type { EntityRecord } from '@/types/entities';
+import { useDataStore } from '../store/dataStore';
+import { useGraphStore } from '../store/graphStore';
+import type { EntityRecord } from '../types/entities';
 
 function searchEntities(entities: Map<string, EntityRecord>, query: string): Set<string> {
   const matches = new Set<string>();
@@ -43,7 +43,7 @@ export function SearchBar() {
 
   const [localQuery, setLocalQuery] = useState(searchQuery);
   const [activeMatchIndex, setActiveMatchIndex] = useState(0);
-  const debounceRef = useRef<ReturnType<typeof setTimeout>>();
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const inputRef = useRef<HTMLInputElement>(null);
 
   // Debounce search
