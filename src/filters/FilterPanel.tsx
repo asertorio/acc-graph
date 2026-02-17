@@ -30,6 +30,7 @@ function ClusterHighlightToggle() {
 
 export function FilterPanel() {
   const entities = useDataStore((s) => s.entities);
+  const relationships = useDataStore((s) => s.relationships);
   const users = useDataStore((s) => s.users);
   const enabledEntityTypes = useFilterStore((s) => s.enabledEntityTypes);
   const toggleEntityType = useFilterStore((s) => s.toggleEntityType);
@@ -295,6 +296,13 @@ export function FilterPanel() {
             </>
           )}
         </div>
+      </div>
+
+      {/* Stats */}
+      <div className="px-3 py-2 border-t border-gray-200 text-[11px] text-gray-400 flex items-center gap-3">
+        <span>{entities.size} nodes</span>
+        <span className="text-gray-300">|</span>
+        <span>{relationships.length} edges</span>
       </div>
     </div>
   );

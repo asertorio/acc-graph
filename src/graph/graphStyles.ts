@@ -163,5 +163,33 @@ export function buildStylesheet(focusedEntityType: EntityType | null): Styleshee
     });
   }
 
+  // Search match highlighting (appended last so they override entity-type styles)
+  styles.push(
+    {
+      selector: 'node.search-dimmed',
+      style: {
+        opacity: 0.12,
+        'text-opacity': 0.2,
+      },
+    },
+    {
+      selector: 'edge.search-dimmed',
+      style: {
+        opacity: 0.05,
+      },
+    },
+    {
+      selector: 'node.search-match',
+      style: {
+        opacity: 1,
+        'border-width': 4,
+        'border-color': '#f59e0b',
+        'overlay-color': '#f59e0b',
+        'overlay-opacity': 0.15,
+        'text-opacity': 1,
+      },
+    },
+  );
+
   return styles;
 }

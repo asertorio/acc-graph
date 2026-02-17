@@ -57,6 +57,8 @@ export function GraphCanvas() {
   const spacingFactor = useGraphStore((s) => s.spacingFactor);
   const selectedNodeId = useGraphStore((s) => s.selectedNodeId);
   const clusterHighlight = useGraphStore((s) => s.clusterHighlight);
+  const searchMatchIds = useGraphStore((s) => s.searchMatchIds);
+  const searchQuery = useGraphStore((s) => s.searchQuery);
 
   const elements = useMemo(() => {
     return buildGraphElements(entities, relationships, {
@@ -159,6 +161,32 @@ export function GraphCanvas() {
     }
   }, [selectedNodeId, clusterHighlight]);
 
+  // Apply search highlighting
+  useEffect(() => {
+    const cy = cyRef.current;
+    if (!cy) return;
+
+    // Clear previous search classes
+    cy.elements().removeClass('search-match search-dimmed');
+
+    if (searchQuery && searchMatchIds.size > 0) {
+      cy.nodes().forEach((node) => {
+        if (searchMatchIds.has(node.id())) {
+          node.addClass('search-match');
+        } else {
+          node.addClass('search-dimmed');
+        }
+      });
+      cy.edges().addClass('search-dimmed');
+      // Un-dim edges between two matched nodes
+      cy.edges().forEach((edge) => {
+        if (searchMatchIds.has(edge.source().id()) && searchMatchIds.has(edge.target().id())) {
+          edge.removeClass('search-dimmed');
+        }
+      });
+    }
+  }, [searchQuery, searchMatchIds, flatElements]);
+
 
   if (flatElements.length === 0) {
     return (
@@ -178,7 +206,7 @@ export function GraphCanvas() {
       style={{ width: '100%', height: '100%' }}
       minZoom={0.1}
       maxZoom={4}
-      wheelSensitivity={1}
+      wheelSensitivity={0.3}
     />
   );
 }

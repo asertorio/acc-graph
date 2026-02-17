@@ -14,29 +14,17 @@ import { DetailPanel } from '../panels/DetailPanel';
 import { ImpliedEdgePanel } from '../panels/ImpliedEdgePanel';
 import { ColorLegend } from '../legend/ColorLegend';
 import { ViewManager } from '../views/ViewManager';
-import type { LayoutName } from '../types/graph';
-
-const LAYOUTS: { value: LayoutName; label: string }[] = [
-  { value: 'cose-bilkent', label: 'Force Directed' },
-  { value: 'circle', label: 'Circle' },
-  { value: 'grid', label: 'Grid' },
-  { value: 'concentric', label: 'Concentric' },
-  { value: 'breadthfirst', label: 'Hierarchy' },
-];
+import { SearchBar } from '../search/SearchBar';
 
 export function App() {
   const isLoading = useDataStore((s) => s.isLoading);
   const isLoaded = useDataStore((s) => s.isLoaded);
   const loadProgress = useDataStore((s) => s.loadProgress);
   const error = useDataStore((s) => s.error);
-  const entities = useDataStore((s) => s.entities);
-  const relationships = useDataStore((s) => s.relationships);
   const selectedNodeId = useGraphStore((s) => s.selectedNodeId);
   const selectedEdgeId = useGraphStore((s) => s.selectedEdgeId);
   const setSelectedNodeId = useGraphStore((s) => s.setSelectedNodeId);
   const setSelectedEdgeId = useGraphStore((s) => s.setSelectedEdgeId);
-  const layout = useGraphStore((s) => s.layout);
-  const setLayout = useGraphStore((s) => s.setLayout);
   const spacingFactor = useGraphStore((s) => s.spacingFactor);
   const setSpacingFactor = useGraphStore((s) => s.setSpacingFactor);
 
@@ -165,8 +153,6 @@ export function App() {
                 Sample Data
               </span>
             )}
-            <span>{entities.size} nodes</span>
-            <span>{relationships.length} edges</span>
             <button
               onClick={() => setShowWelcome(true)}
               className="text-gray-400 hover:text-gray-600"
@@ -177,22 +163,16 @@ export function App() {
           </div>
         )}
 
+        {isLoaded && (
+          <div className="ml-4">
+            <SearchBar />
+          </div>
+        )}
+
         <div className="ml-auto flex items-center gap-2">
           {isLoaded && <ViewManager />}
-          <label className="text-xs text-gray-500">Layout:</label>
-          <select
-            value={layout}
-            onChange={(e) => setLayout(e.target.value as LayoutName)}
-            className="text-xs border border-gray-200 rounded px-2 py-1 bg-white"
-          >
-            {LAYOUTS.map((l) => (
-              <option key={l.value} value={l.value}>
-                {l.label}
-              </option>
-            ))}
-          </select>
-          {layout === 'cose-bilkent' && (
-            <div className="flex items-center gap-1.5 ml-2">
+          {isLoaded && (
+            <div className="flex items-center gap-1.5">
               <label className="text-xs text-gray-500">Spacing:</label>
               <input
                 type="range"

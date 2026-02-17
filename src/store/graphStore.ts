@@ -8,6 +8,8 @@ interface GraphState {
   layout: LayoutName;
   spacingFactor: number;
   clusterHighlight: boolean;
+  searchQuery: string;
+  searchMatchIds: Set<string>;
 
   setSelectedNodeId: (id: string | null) => void;
   setSelectedEdgeId: (id: string | null) => void;
@@ -15,6 +17,8 @@ interface GraphState {
   setLayout: (layout: LayoutName) => void;
   setSpacingFactor: (factor: number) => void;
   setClusterHighlight: (value: boolean) => void;
+  setSearchQuery: (query: string) => void;
+  setSearchMatchIds: (ids: Set<string>) => void;
 }
 
 export const useGraphStore = create<GraphState>((set) => ({
@@ -24,6 +28,8 @@ export const useGraphStore = create<GraphState>((set) => ({
   layout: 'cose-bilkent',
   spacingFactor: 1.0,
   clusterHighlight: false,
+  searchQuery: '',
+  searchMatchIds: new Set(),
 
   setSelectedNodeId: (id) => set({ selectedNodeId: id, selectedEdgeId: null }),
   setSelectedEdgeId: (id) => set({ selectedEdgeId: id, selectedNodeId: null }),
@@ -31,4 +37,6 @@ export const useGraphStore = create<GraphState>((set) => ({
   setLayout: (layout) => set({ layout }),
   setSpacingFactor: (factor) => set({ spacingFactor: factor }),
   setClusterHighlight: (value) => set({ clusterHighlight: value }),
+  setSearchQuery: (query) => set({ searchQuery: query }),
+  setSearchMatchIds: (ids) => set({ searchMatchIds: ids }),
 }));
